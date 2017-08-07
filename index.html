@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Psychic Game</title>
+</head>
+<body>
+
+	<div id="psychicgame">
+		<h1>The Psychic Game</h1>
+		<p>Guess what letter I'm thinking of!</p>
+	</div>
+
+<script type="text/javascript">
+// <!-- Have computer search through an array of all letters and choose one at start of game -->
+var alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l',
+    'm','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+// <!-- Teach program to give user wins and losses based on what is inputted -->
+var wins = 0;
+var losses = 0;
+var guesses = 9;
+// <!-- Have program recognize when user types in a letter (on.key event) -->
+document.onkeyup = function(event) {
+      var userGuess = event.key;
+      var computerGuess = alphabet[Math.floor(Math.random() * alphabet.length)];
+      if (userGuess === computerGuess) {
+      	wins++
+      }
+      else {
+        guesses--;
+      }
+
+      if (guesses === 0){
+        losses++
+    }
+ 	  var html =
+          "<p>You chose: " + userGuess + "</p>" +
+          "<p>Wins: " + wins + "</p>" +
+          "<p>Losses: " + losses + "</p>" +
+          "<p>Remaining Guesses: " + guesses + "</p>";
+        // Set the inner HTML contents of the #game div to our html string
+        document.querySelector("#psychicgame").innerHTML = html;
+}
+
+// <!-- Find way to record that letter on screen -->
+// <!-- Only allow 9 guesses -->
+// <!-- Include HTML text -->
+// <!-- Have game reset without refreshing the page -->
+
+</script>
+
+
+
+</body>
+</html>
